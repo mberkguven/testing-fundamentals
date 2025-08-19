@@ -24,3 +24,13 @@ it("does not call onAdd when input is empty", () => {
   fireEvent.click(screen.getByLabelText("add-todo"));
   expect(onAdd).not.toHaveBeenCalled();
 });
+
+// // Uncomment the test below to see a failing example involving trimming.
+// // It expects the raw spaced string to be submitted, but the form trims input.
+// it("submits raw spaced text without trimming (this will fail)", () => {
+//   render(<TodoForm onAdd={onAdd} />);
+//   const input = screen.getByLabelText("todo-input") as HTMLInputElement;
+//   fireEvent.change(input, { target: { value: "  Spaced  " } });
+//   fireEvent.click(screen.getByLabelText("add-todo"));
+//   expect(onAdd).toHaveBeenCalledWith("  Spaced  ");
+// });

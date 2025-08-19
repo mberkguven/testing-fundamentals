@@ -38,3 +38,34 @@ it("calls onDelete when delete button is clicked", () => {
   fireEvent.click(screen.getByLabelText("delete-Test todo"));
   expect(mockOnDelete).toHaveBeenCalledWith("1");
 });
+
+// Test: Applies line-through style when completed is true
+it("applies visual style for completed todos", () => {
+  const completedTodo = { ...mockTodo, completed: true };
+  render(
+    <TodoItem
+      todo={completedTodo}
+      onToggle={mockOnToggle}
+      onDelete={mockOnDelete}
+    />
+  );
+  const checkbox = screen.getByLabelText(
+    "toggle-Test todo"
+  ) as HTMLInputElement;
+  expect(checkbox.checked).toBe(true);
+  expect(screen.getByText("Test todo")).toHaveClass("line-through");
+});
+
+// // Uncomment the test below to see a failing expectation about visual style.
+// // It wrongly expects no line-through when the todo is completed, so it will fail.
+// it("does not apply line-through when completed (this will fail)", () => {
+//   const completedTodo = { ...mockTodo, completed: true };
+//   render(
+//     <TodoItem
+//       todo={completedTodo}
+//       onToggle={mockOnToggle}
+//       onDelete={mockOnDelete}
+//     />
+//   );
+//   expect(screen.getByText("Test todo")).not.toHaveClass("line-through");
+// });

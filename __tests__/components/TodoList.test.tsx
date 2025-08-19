@@ -25,8 +25,15 @@ it("renders todo item B", () => {
   expect(screen.getByText("B")).toBeInTheDocument();
 });
 
-// Uncomment the test below to see what happens when you expect a todo item that doesn't exist.
-// This will show a failing test and help you understand how test data affects results.
+// Test: Renders correct number of items
+it("renders the correct number of items", () => {
+  render(<TodoList todos={todos} onToggle={() => {}} onDelete={() => {}} />);
+  // Two list items should be present
+  expect(screen.getAllByRole("listitem")).toHaveLength(2);
+});
+
+// // Uncomment the test below to see what happens when you expect a todo item that doesn't exist.
+// // This will show a failing test and help you understand how test data affects results.
 // it("renders todo item A", () => {
 //   // This test will fail because the todos array is empty, so "A" cannot be found.
 //   render(<TodoList todos={[]} onToggle={() => {}} onDelete={() => {}} />);
