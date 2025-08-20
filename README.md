@@ -49,6 +49,8 @@ Test files are organized in the `__tests__` directory by type and feature.
       useTodos.test.tsx
     /integration
       app.test.tsx
+    /utils
+      utils.test.ts
   jest.config.js, jest.setup.ts, tsconfig.json, package.json, README.md
 ```
 
